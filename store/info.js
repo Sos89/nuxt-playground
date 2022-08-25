@@ -21,7 +21,7 @@ export const actions = {
       })
       commit('setInfo', data)
     }catch (e){
-      console.log(e)
+      return true
     }
   }
 }

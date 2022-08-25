@@ -23,7 +23,7 @@ export const actions = {
       commit('setEmail', payload.email)
       return res;
     }catch (e){
-      console.log(e, 'catch')
+      return true
     }
   }
 }

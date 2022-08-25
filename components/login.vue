@@ -2,8 +2,8 @@
   <div class="ml-115 w-370 mt-327">
     <p class="text-regal-blue font-roboto font-medium text-23 mb-31">Login</p>
     <form @submit.prevent="sendEmail">
-      <label class="text-silver text-xs">Enter your email</label>
-      <input v-model="email" type="email" class="w-370 border-none outline-none border-b-2-silver input" placeholder="myemail@mail.com">
+      <label class="text-silver text-xs" :class="{err: isActive}"> <span v-if="isActive===true"><i class="fa-solid fa-circle-exclamation"></i></span> Enter your email</label>
+      <input v-model="email" type="email" :class="{active: isActive}" class="w-370 border-none outline-none border-b-2-silver input" placeholder="myemail@mail.com">
       <button type="submit" class="flex bg-regal-blue mt-6 py-9 px-16 rounded-md ml-253">Send code</button>
     </form>
 
@@ -17,8 +17,9 @@ export default {
 
   data() {
     return {
-      email: 'demo@demo.com'
-      //
+      email: null,
+      isActive: false
+      //demo@demo.com
     }
   },
   computed: {
@@ -29,10 +30,14 @@ export default {
       fetchData: 'login/fetchEmail',
     }),
      async sendEmail() {
-      await this.fetchData({email:this.email})
-       if (this.getEmail === localStorage.email){
-         this.$router.push('/code')
-       }
+      if (this.email){
+        await this.fetchData({email:this.email})
+        if (this.getEmail === localStorage.email){
+          this.$router.push('/code')
+        }
+      }else {
+        this.isActive = true
+      }
     }
   }
 }
@@ -49,5 +54,14 @@ export default {
 }
   button{
     color: white;
+  }
+
+  .active{
+    border-bottom: 3px solid red;
+    border-right: 4px;
+  }
+
+  .err{
+    color: #AF2727;
   }
 </style>

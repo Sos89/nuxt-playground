@@ -21,7 +21,7 @@ export const actions = {
       localStorage.setItem('jwt', JSON.stringify(jwt))
       commit('setCode', JSON.stringify(jwt))
     }catch (e){
-      console.log(e, 'code')
+      return true
     }
   }
 }

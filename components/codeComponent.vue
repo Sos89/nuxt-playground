@@ -29,7 +29,7 @@ export default {
   components: { vuetify },
   data(){
     return {
-      code: '',
+      code: null,
       isActive: false,
     }
   },
@@ -45,13 +45,15 @@ export default {
       this.code = ''
     },
     async sendCode(){
-     await this.setCode({email: this.getEmail, code: this.code})
+    if (this.code){
+      await this.setCode({email: this.getEmail, code: this.code})
       if (this.getCode === localStorage.jwt) {
         this.$router.push('/profile')
       }
-      else{
-        this.isActive = true
-      }
+    }
+    else{
+      this.isActive = true
+    }
     }
   }
 }
