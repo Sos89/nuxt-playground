@@ -67,39 +67,12 @@
     <div class="flex flex-col w-1480 ml-36 mt-31">
         <p class="ml-31 text-regal-blue text-23 font-roboto">Work logs</p>
       <div class="flex flex-row ml-31 mt-20">
-        <div class="ml-20">
-          <p class="text-silver text-12 font-roboto font-semibold">Sunday</p>
-          <work-time></work-time>
-          <button class="btn flex items-center justify-center">+</button>
-        </div>
-        <div class="ml-20">
-          <p class="text-silver text-12 font-roboto font-semibold">Monday</p>
-          <work-time></work-time>
-          <work-time></work-time>
-          <button class="btn flex items-center justify-center">+</button>
-        </div>
-        <div class="ml-20">
-          <p class="text-silver text-12 font-roboto font-semibold">Tuesday</p>
-          <work-time></work-time>
-          <work-time></work-time>
-          <button class="btn flex items-center justify-center">+</button>
-        </div>
-        <div class="ml-20">
-          <p class="text-silver text-12 font-roboto font-semibold">Wednesday</p>
-          <work-time></work-time>
-          <work-time></work-time>
-          <button class="btn flex items-center justify-center">+</button>
-        </div>
-        <div class="ml-20">
-          <p class="text-silver text-12 font-roboto font-semibold">Thursday</p>
-          <work-time></work-time>
-          <work-time></work-time>
-          <button class="btn flex items-center justify-center">+</button>
-        </div>
-        <div class="ml-20">
-          <p class="text-silver text-12 font-roboto font-semibold">Friday</p>
-          <work-time></work-time>
-          <button class="btn flex items-center justify-center">+</button>
+        <div v-for="index in inputArr">
+          <div class="ml-20">
+            <p class="text-silver text-12 font-roboto font-semibold">{{ index.title }}</p>
+            <work-time v-for="item in index.qty" :name="index.name + '[' + (item - 1) + ']'" ></work-time>
+            <button @click="index.qty++" class="btn flex items-center justify-center hover:bg-violet-600">+</button>
+          </div>
         </div>
       </div>
     </div>
@@ -112,25 +85,36 @@ import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "myProfileComponent",
-async  fetch(){
-  await this.fetchUserInfo()
-  },
-  computed: {
-    ...mapGetters({
-      jwt: 'code/getCode',
-      email: 'login/getEmail',
-      userInfo: 'info/getInfo'
-    })
-  },
-  methods:{
-    ...mapActions({
-      fetchInfo: 'info/fetchInfo'
-    }),
-   async fetchUserInfo() {
-     await this.fetchInfo()
+  data () {
+    return {
+      inputArr: [
+        {id: 1, qty: 1, title: 'Sunday', name: 'sunday' },
+        {id: 2, qty: 2, title: 'Monday', name: 'monday' },
+        {id: 3, qty: 2, title: 'Tuesday', name: 'tuesday' },
+        {id: 4, qty: 2, title: 'Wednesday', name: 'wednesday' },
+        {id: 5, qty: 2, title: 'Thursday', name: 'thursday' },
+        {id: 6, qty: 1, title: 'Friday', name: 'friday' },
+      ]
     }
   },
-
+  async  fetch(){
+    await this.fetchUserInfo()
+    },
+    computed: {
+      ...mapGetters({
+        jwt: 'code/getCode',
+        email: 'login/getEmail',
+        userInfo: 'info/getInfo'
+      })
+    },
+    methods:{
+      ...mapActions({
+        fetchInfo: 'info/fetchInfo'
+      }),
+      async fetchUserInfo() {
+        await this.fetchInfo()
+      },
+    },
 }
 </script>
 

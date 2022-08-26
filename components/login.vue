@@ -6,7 +6,6 @@
       <input v-model="email" type="email" :class="{active: isActive}" class="w-370 border-none outline-none border-b-2-silver input" placeholder="myemail@mail.com">
       <button type="submit" class="flex bg-regal-blue mt-6 py-9 px-16 rounded-md ml-253">Send code</button>
     </form>
-
   </div>
 </template>
 
@@ -17,7 +16,7 @@ export default {
 
   data() {
     return {
-      email: null,
+      email: 'demo@demo.com',
       isActive: false
       //demo@demo.com
     }
@@ -30,6 +29,7 @@ export default {
       fetchData: 'login/fetchEmail',
     }),
      async sendEmail() {
+
       if (this.email){
         await this.fetchData({email:this.email})
         if (this.getEmail === localStorage.email){
@@ -37,6 +37,12 @@ export default {
         }
       }else {
         this.isActive = true
+        this.$notify({
+          text: 'Wrong password, please try again',
+          duration: 3000,
+          speed: 1000,
+          position: 'top right',
+        })
       }
     }
   }

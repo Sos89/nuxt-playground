@@ -1,16 +1,22 @@
 <template>
 <div class="w-223">
-
-  <p class="text-silver text-12 font-roboto mt-20">start/ end time</p>
-  <p class="flex justify-between line mt-31 text-silver">
-    <span class="span">09:00 - 12:00</span> <span><i class="fa-solid fa-xmark"></i> <i class="fa-solid fa-clock"></i></span>
-  </p>
+  <form>
+    <div>
+      <label class="text-silver text-12 font-roboto mt-20">start/ end time</label>
+      <input class="flex justify-between line mt-31 text-silver w-223" type="time" :name="name" placeholder="09:00 - 12:00">
+    </div>
+  </form>
 </div>
 </template>
 
 <script>
 export default {
-  name: "workTime"
+  name: "workTime",
+  props: {
+    name: {
+      type: String
+    }
+  }
 }
 </script>
 
@@ -19,7 +25,7 @@ export default {
   border-bottom: 3px solid #95A2A7;
   margin-top: 18px;
 }
-.span{
+input ::placeholder{
   color: darkslategrey;
 }
 </style>
