@@ -1,5 +1,6 @@
 <template>
   <div>
+    <notifications />
     <div class="ml-115 w-370 mt-327">
       <p class="text-regal-blue font-roboto font-medium text-23 mb-31">Login</p>
       <p class="font-roboto text-rdgBlack text-14 mb-31">To finalize your verification, please enter the code that has been sent to your email address / SMS</p>
@@ -46,13 +47,28 @@ export default {
     },
     async sendCode(){
     if (this.code){
-      await this.setCode({email: this.getEmail, code: this.code})
+      const res = await this.setCode({email: this.getEmail, code: this.code})
       if (this.getCode === localStorage.jwt) {
         this.$router.push('/profile')
+      }else {
+        this.$notify({
+          text: 'Wrong email, please try again',
+          duration: 3000,
+          speed: 1000,
+          position: 'top right',
+          type: 'error',
+        })
       }
     }
     else{
       this.isActive = true
+      this.$notify({
+        text: 'Wrong Code, please try again',
+        duration: 3000,
+        speed: 1000,
+        position: 'top right',
+        type: 'error',
+      })
     }
     }
   }

@@ -17,11 +17,12 @@ export const mutations = {
 export const actions = {
   async fetchCode({commit}, payload) {
     try {
-      const {jwt} = await this.$axios.$post('https://azapp-playground-demo-api.azurewebsites.net/api/Accounts/LoginWithCode', payload)
+
+      const jwt = await this.$services.auth.code(payload)
       localStorage.setItem('jwt', JSON.stringify(jwt))
       commit('setCode', JSON.stringify(jwt))
     }catch (e){
-      return true
+      console.log(e)
     }
   }
 }

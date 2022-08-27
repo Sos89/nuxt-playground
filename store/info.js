@@ -9,16 +9,11 @@ export const getters = {
 }
 
 export const actions = {
-  async fetchInfo({commit}, payload){
+  async fetchInfo({commit}){
 
     try {
-      const token = JSON.parse(localStorage.jwt)
-      const data = await this.$axios.$get('https://azapp-playground-demo-api.azurewebsites.net/api/Accounts/GetCurrentAppUser', {
-        headers: {
-          "Authorization": `Bearer ${token.token}`,
-          'Accept': 'application/json'
-        }
-      })
+      const data = await this.$services.userinfo.userData()
+
       commit('setInfo', data)
     }catch (e){
       return true
