@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     ...mapGetters({getEmail: 'login/getEmail'}),
-    ...mapGetters({getCode: 'code/getCode'}),
+    ...mapGetters({getCode: 'code/getCode', error: 'code/getError'}),
   },
   methods: {
     ...mapActions({
@@ -50,7 +50,7 @@ export default {
       const res = await this.setCode({email: this.getEmail, code: this.code})
       if (this.getCode === localStorage.jwt) {
         this.$router.push('/profile')
-      }else {
+      }else if(this.error) {
         this.$notify({
           text: 'Wrong email, please try again',
           duration: 3000,

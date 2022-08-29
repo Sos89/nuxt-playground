@@ -104,7 +104,8 @@ export default {
       ...mapGetters({
         jwt: 'code/getCode',
         email: 'login/getEmail',
-        userInfo: 'info/getInfo'
+        userInfo: 'info/getInfo',
+        error: 'info/getError'
       })
     },
     methods:{
@@ -112,7 +113,9 @@ export default {
         fetchInfo: 'info/fetchInfo'
       }),
       async fetchUserInfo() {
-        await this.fetchInfo()
+        if (!this.error){
+          await this.fetchInfo()
+        }
       },
     },
 }

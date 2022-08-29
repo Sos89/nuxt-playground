@@ -24,18 +24,20 @@ export default {
     })
   },
   methods: {
-    // ...mapMutations({
-    //   setEmail: 'login/setEmail'
-    // }),
+    ...mapMutations({
+      removeData: 'info/remove',
+      removeCode: 'code/remove',
+      removeEmail: 'login/remove'
+    }),
     ...mapActions({
       fetchInfo: 'info/fetchInfo',
       fetchEmail: 'login/fetchEmail',
       fetchCode: 'code/fetchCode'
     }),
     logout(){
-      this.fetchEmail = null
-      this.fetchCode = null
-      this.fetchInfo = null
+      this.removeData()
+      this.removeCode()
+      this.removeEmail()
       localStorage.removeItem('email')
       localStorage.removeItem('jwt')
       this.$router.push('/')

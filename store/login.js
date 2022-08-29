@@ -1,17 +1,29 @@
 
 export const state = () => ({
-  email: ''
+  email: '',
+  err: ''
 })
 
 export const getters = {
   getEmail(state) {
     return state.email
+  },
+  getError(state){
+    return state.err
   }
 }
 
 export const mutations = {
   setEmail(state, payload) {
     state.email = payload
+  },
+  remove(state) {
+    if (state.email) {
+      state.email = '';
+    }
+  },
+  setErr(state, payload){
+    state.err = payload
   }
 }
 
@@ -23,7 +35,7 @@ export const actions = {
       commit('setEmail', payload.email)
       return res;
     }catch (e){
-      console.log(e)
+      commit('setErr', e)
     }
   }
 }

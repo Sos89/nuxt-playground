@@ -19,7 +19,6 @@ export default {
     return {
       email: 'demo@demo.com',
       isActive: false
-      //demo@demo.com
     }
   },
   computed: {
@@ -30,7 +29,7 @@ export default {
       fetchData: 'login/fetchEmail',
     }),
      async sendEmail() {
-      if (this.email === localStorage.email){
+      if (this.email){
        await this.fetchData({email:this.email})
         if (this.getEmail === localStorage.email){
           this.$router.push('/code')
