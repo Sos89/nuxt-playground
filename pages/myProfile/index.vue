@@ -1,5 +1,7 @@
 <template>
-<my-profile-component></my-profile-component>
+  <div>
+    <my-profile-component></my-profile-component>
+  </div>
 </template>
 
 <script>

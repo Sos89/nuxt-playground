@@ -1,12 +1,11 @@
 <template>
   <div>
-    <login/>
+      <profile-component></profile-component>
   </div>
 </template>
-
 <script>
-export default {
-  name: 'IndexPage',
-  layout: 'imageLayouts',
-}
+  export default {
+    layout: 'profileLayouts',
+    middleware: 'profile',
+  }
 </script>

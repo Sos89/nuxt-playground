@@ -48,7 +48,8 @@ module.exports = {
       '1': '1rem',
       '20': '1.25rem',
       '36': '2.25rem',
-      '8': '0.5rem'
+      '8': '0.5rem',
+      '41': '2.563rem'
     },
     colors: {
       'regal-blue': '#003367',

@@ -14,11 +14,11 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
   name: "login",
-
   data() {
     return {
       email: 'demo@demo.com',
       isActive: false
+      //
     }
   },
   computed: {
@@ -54,7 +54,7 @@ export default {
   margin-top: 12px;
   margin-left: -10px;
   border-bottom: 3px solid #95A2A7;
-  color: #95A2A7;
+  color: #3d3d3e;
   box-shadow: none !important;
   outline: none !important;
 }

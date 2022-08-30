@@ -67,11 +67,18 @@
     <div class="flex flex-col w-1480 ml-36 mt-31">
         <p class="ml-31 text-regal-blue text-23 font-roboto">Work logs</p>
       <div class="flex flex-row ml-31 mt-20">
-        <div v-for="index in inputArr">
+<!--        <div v-for="index in inputArr" :key="index.id">-->
+<!--          <div class="ml-20">-->
+<!--            <p class="text-silver text-12 font-roboto font-semibold">{{ index.title }}</p>-->
+<!--            <work-time v-for="item in index.qty" :name="index.name + '[' + (item - 1) + ']'" @remove="remove" :id="index.id"></work-time>-->
+<!--            <button @click="index.qty++" class="btn flex items-center justify-center ">+</button>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div v-for="index in inputArr" :key="index.id">
           <div class="ml-20">
             <p class="text-silver text-12 font-roboto font-semibold">{{ index.title }}</p>
-            <work-time v-for="item in index.qty" :name="index.name + '[' + (item - 1) + ']'" ></work-time>
-            <button @click="index.qty++" class="btn flex items-center justify-center hover:bg-violet-600">+</button>
+            <work-time v-for="item in index.items" :name="index.name + '[' + item.id + ']'" @remove="remove" :id="item.id"></work-time>
+            <button @click="addInput(index.id)" class="btn flex items-center justify-center ">+</button>
           </div>
         </div>
       </div>
@@ -87,13 +94,67 @@ export default {
   name: "myProfileComponent",
   data () {
     return {
+      // inputArr: [
+      //   {id: 1, qty: 1, title: 'Sunday', name: 'sunday' },
+      //   {id: 2, qty: 2, title: 'Monday', name: 'monday' },
+      //   {id: 3, qty: 2, title: 'Tuesday', name: 'tuesday' },
+      //   {id: 4, qty: 2, title: 'Wednesday', name: 'wednesday' },
+      //   {id: 5, qty: 2, title: 'Thursday', name: 'thursday' },
+      //   {id: 6, qty: 1, title: 'Friday', name: 'friday' },
+      // ]
       inputArr: [
-        {id: 1, qty: 1, title: 'Sunday', name: 'sunday' },
-        {id: 2, qty: 2, title: 'Monday', name: 'monday' },
-        {id: 3, qty: 2, title: 'Tuesday', name: 'tuesday' },
-        {id: 4, qty: 2, title: 'Wednesday', name: 'wednesday' },
-        {id: 5, qty: 2, title: 'Thursday', name: 'thursday' },
-        {id: 6, qty: 1, title: 'Friday', name: 'friday' },
+        {
+          id: 1,
+          title: 'Sunday',
+          name: 'sunday',
+          items: [
+            {id: 1}
+          ]
+        },
+        {
+          id: 2,
+          title: 'Monday',
+          name: 'monday',
+          items: [
+            {id: 2},
+            {id: 3}
+          ]
+        },
+        {
+          id: 3,
+          title: 'Tuesday',
+          name: 'tuesday',
+          items: [
+            {id: 4},
+            {id: 5}
+          ]
+        },
+        {
+          id: 4,
+          title: 'Wednesday',
+          name: 'wednesday',
+          items: [
+            {id: 6},
+            {id: 7}
+          ]
+        },
+        {
+          id: 5,
+          title: 'Thursday',
+          ame: 'thursday',
+          items: [
+            {id: 8},
+            {id: 9}
+          ]
+        },
+        {
+          id: 6,
+          title: 'Friday',
+          name: 'friday',
+          items: [
+            {id: 10}
+          ]
+        },
       ]
     }
   },
@@ -117,6 +178,18 @@ export default {
           await this.fetchInfo()
         }
       },
+      remove(id){
+        this.inputArr.map((item) => {
+            item.items = item.items.filter((input) => input.id !== id)
+        })
+      },
+      addInput(id) {
+        this.inputArr.map((item) => {
+          if(item.id == id){
+            item.items.push({id: Math.floor(Date.now() / 10) })
+          }
+        })
+      }
     },
 }
 </script>

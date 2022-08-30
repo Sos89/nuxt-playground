@@ -49,7 +49,7 @@ export default {
     if (this.code){
       const res = await this.setCode({email: this.getEmail, code: this.code})
       if (this.getCode === localStorage.jwt) {
-        this.$router.push('/profile')
+        this.$router.push('/')
       }else if(this.error) {
         this.$notify({
           text: 'Wrong email, please try again',

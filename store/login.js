@@ -1,6 +1,6 @@
 
 export const state = () => ({
-  email: '',
+  email: null,
   err: ''
 })
 
@@ -19,7 +19,7 @@ export const mutations = {
   },
   remove(state) {
     if (state.email) {
-      state.email = '';
+      state.email = null;
     }
   },
   setErr(state, payload){

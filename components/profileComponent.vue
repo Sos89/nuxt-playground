@@ -40,7 +40,7 @@ export default {
       this.removeEmail()
       localStorage.removeItem('email')
       localStorage.removeItem('jwt')
-      this.$router.push('/')
+      this.$router.push('/login')
     },
      info(){
       if (!this.jwt){
