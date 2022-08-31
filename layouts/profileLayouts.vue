@@ -24,6 +24,6 @@ a.nuxt-link-active {
   font-weight: bold;
 }
 a.nuxt-link-exact-active {
-  color: #95A2A7;
+  color: #bdeded;
 }
 </style>

@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true,
+    "types": [
+      "@nuxtjs/auth-next",
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

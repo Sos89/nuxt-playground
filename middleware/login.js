@@ -1,7 +1,6 @@
-export default function ({redirect, store}) {
-  const logined = store.state.login.email ? true : false
-  if (logined) {
-    // redirect('/myProfile')
-    window.history.back()
+export default function ({ redirect, store, route }) {
+  const isAuthenticated = store.state.login.email ? true : false
+  if (isAuthenticated && route.path === '/login'){
+    redirect('/code')
   }
 }

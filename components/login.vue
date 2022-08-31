@@ -22,7 +22,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({getEmail: 'login/getEmail'}),
+    ...mapGetters({getEmail: 'login/getEmail', error: 'login/getError'}),
   },
   methods: {
     ...mapActions({
@@ -31,10 +31,21 @@ export default {
      async sendEmail() {
       if (this.email){
        await this.fetchData({email:this.email})
+        console.log(this.error)
         if (this.getEmail === localStorage.email){
           this.$router.push('/code')
         }
-      }else {
+        else {
+          this.isActive = true
+          this.$notify({
+            text: 'Wrong email, please try again',
+            duration: 3000,
+            speed: 1000,
+            position: 'top',
+            type: 'error',
+          })
+        }
+      }else{
         this.isActive = true
         this.$notify({
           text: 'Wrong email, please try again',

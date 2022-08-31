@@ -6,6 +6,6 @@
 <script>
 export default {
   layout: 'imageLayouts',
-  middleware: 'auth',
+  middleware: 'token',
 }
 </script>

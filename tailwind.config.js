@@ -56,7 +56,7 @@ module.exports = {
       'silver': '#95A2A7',
       'rdgBlack': 'rgba(0, 0, 0, 0.87)',
       'white': '#fff',
-      'red': '#AF2727'
+      'red': '#AF2727',
     },
     fontSize: {
       '40': ['2.5rem', {

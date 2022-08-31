@@ -48,12 +48,18 @@ export default {
 
 
   ],
+  router: {
+    // middleware: ['auth']
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    // '@nuxtjs/auth-next'
   ],
+
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -65,7 +71,4 @@ export default {
   build: {
   },
 
-  // router: {
-  //   middleware: ['auth', 'login', 'profile']
-  // }
 }
