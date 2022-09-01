@@ -16,9 +16,9 @@ export default {
   name: "login",
   data() {
     return {
-      email: 'demo@demo.com',
+      email: '',
       isActive: false
-      //
+      //demo@demo.com
     }
   },
   computed: {

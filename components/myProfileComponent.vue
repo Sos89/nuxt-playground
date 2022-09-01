@@ -8,42 +8,42 @@
         <div>
           <p class="ml-36 text-regal-blue text-23 font-roboto">General Info</p>
           <div class="flex flex-row w-709">
-            <div class="flex flex-col ml-36 mt-1 w-223">
+            <div class="flex flex-col ml-36 mt-1 w-223" v-if="userInfo">
               <label class="text-silver font-roboto text-12">First name</label>
-              <p class="font-roboto text-14 mt-8 max-w-full line"> <span v-if="userInfo" >{{ userInfo.firstName}}</span> </p>
+              <input type="text" :value="userInfo.firstName" class="font-roboto text-14 mt-8 max-w-full line">
             </div>
-            <div class="flex flex-col ml-36 mt-1 w-223 ml-20">
+            <div class="flex flex-col ml-36 mt-1 w-223 ml-20" v-if="userInfo" >
               <label class="text-silver font-roboto text-12">Last name</label>
-              <p class="font-roboto text-14 mt-8 w-full line"><span v-if="userInfo" >{{ userInfo.lastName}}</span></p>
+              <input type="text" :value="userInfo.lastName" class="font-roboto text-14 mt-8 w-full line">
             </div>
-            <div class="flex flex-col ml-36 mt-1 w-223 ml-20">
+            <div class="flex flex-col ml-36 mt-1 w-223 ml-20" v-if="userInfo">
               <label class="text-silver font-roboto text-12">Date of birth</label>
-              <p class="flex justify-between font-roboto text-14 mt-8 max-w-full line"><span v-if="userInfo" >{{ userInfo.dateOfBirth}}</span> <i class="fa-solid fa-calendar"></i></p>
+              <input type="text" :value="userInfo.dateOfBirth" class="flex justify-between font-roboto text-14 mt-8 max-w-full line">
             </div>
           </div>
 
-          <div class="flex flex-row mt-1 w-1095">
+          <div class="flex flex-row mt-1 w-1095" v-if="userInfo">
             <div class="flex flex-col ml-36 mt-1 w-345 ml-20">
               <label class="text-silver font-roboto text-12">Email</label>
-              <p class="flex justify-between font-roboto text-14 mt-8 max-w-345 line"><span  v-if="userInfo">{{ userInfo.email}}</span></p>
+              <input type="email" :value="userInfo.email" class="flex justify-between font-roboto text-14 mt-8 max-w-345 line">
             </div>
-            <div class="flex flex-col ml-36 mt-1 w-345 ml-20">
+            <div class="flex flex-col ml-36 mt-1 w-345 ml-20" v-if="userInfo">
               <label class="text-silver font-roboto text-12">Personal Email</label>
-              <p class="flex justify-between font-roboto text-14 mt-8 max-w-345 line"><span v-if="userInfo" >{{ userInfo.personalEmail}}</span></p>
+              <input type="email" :value="userInfo.personalEmail" class="flex justify-between font-roboto text-14 mt-8 max-w-345 line">
             </div>
-            <div class="flex flex-col ml-36 mt-1 w-345 ml-20">
-              <p class="flex justify-between font-roboto text-14 mt-8 max-w-345 line"><span v-if="userInfo" >{{ userInfo.mobilePhone}}</span></p>
+            <div class="flex flex-col ml-36 mt-1 w-345 ml-20" v-if="userInfo">
+              <input type="text" :value="userInfo.mobilePhone" class="flex justify-between font-roboto text-14 mt-8 max-w-345 line">
             </div>
           </div>
 
           <div class="flex flex-row mt-1 w-709">
-            <div class="flex flex-col ml-36 mt-1 w-223 ml-20">
+            <div class="flex flex-col ml-36 mt-1 w-223 ml-20" v-if="userInfo">
               <label class="text-silver font-roboto text-12">Start Date</label>
-              <p class="flex justify-between font-roboto text-14 mt-8 w-223 line"><span v-if="userInfo" >{{ userInfo.startDate}}</span> <i class="fa-solid fa-calendar"></i></p>
+              <input type="text" :value="userInfo.startDate" class="flex justify-between font-roboto text-14 mt-8 w-223 line">
             </div>
-            <div class="flex flex-col ml-36 mt-1 w-108 ml-20">
+            <div class="flex flex-col ml-36 mt-1 w-108 ml-20" v-if="userInfo">
               <label class="text-silver font-roboto text-12">Address</label>
-              <p class="flex justify-between font-roboto text-14 mt-8 w-108 line"> <span v-if="userInfo">{{userInfo.absences}}</span></p>
+              <input type="text" :value="userInfo.absences" class="flex justify-between font-roboto text-14 mt-8 w-108 line">
             </div>
             <div class="flex flex-col ml-36 mt-1 w-108 mt-47">
               <p class=""><input type="checkbox" class="input font-roboto text-14"> Core team member</p>
@@ -52,13 +52,19 @@
         </div>
         <div class="ml-36 w-345">
           <p class="font-roboto text-23 text-regal-blue">My accounts</p>
-          <div class="flex flex-col mt-1 w-108 mt-47">
+          <div class="flex flex-col mt-1 w-108 mt-47" v-if="userInfo">
             <p class="text-silver font-roboto text-12">Slack</p>
-            <p class="text-silver font-roboto text-12 w-345 mt-1 line p-9"><i class="fa-brands fa-slack"></i> <span v-if="userInfo" >{{ userInfo.slackUserName}}</span></p>
+            <div class="slack">
+              <i class="fa-brands fa-slack"></i>
+              <input type="text" :value="userInfo.slackUserName" class="text-silver font-roboto text-12 w-345 mt-1 line p-9">
+            </div>
           </div>
-          <div class="flex flex-col mt-1 w-108 mt-47">
+          <div class="flex flex-col mt-1 w-108 mt-47" v-if="userInfo">
             <p class="text-silver font-roboto text-12">GitHub</p>
-            <p class="text-silver font-roboto text-12 w-345 mt-1 line p-9"><i class="fa-brands fa-github"></i> <span v-if="userInfo" >{{ userInfo.gitHubUserName}}</span></p>
+            <div class="github">
+              <i class="fa-brands fa-github"></i>
+              <input type="text" :value="userInfo.gitHubUserName" class="text-silver font-roboto text-12 w-345 mt-1 line p-9">
+            </div>
           </div>
         </div>
       </div>
@@ -67,13 +73,6 @@
     <div class="flex flex-col w-1480 ml-36 mt-31">
         <p class="ml-31 text-regal-blue text-23 font-roboto">Work logs</p>
       <div class="flex flex-row ml-31 mt-20">
-<!--        <div v-for="index in inputArr" :key="index.id">-->
-<!--          <div class="ml-20">-->
-<!--            <p class="text-silver text-12 font-roboto font-semibold">{{ index.title }}</p>-->
-<!--            <work-time v-for="item in index.qty" :name="index.name + '[' + (item - 1) + ']'" @remove="remove" :id="index.id"></work-time>-->
-<!--            <button @click="index.qty++" class="btn flex items-center justify-center ">+</button>-->
-<!--          </div>-->
-<!--        </div>-->
         <div v-for="index in inputArr" :key="index.id">
           <div class="ml-20">
             <p class="text-silver text-12 font-roboto font-semibold">{{ index.title }}</p>
@@ -94,14 +93,6 @@ export default {
   name: "myProfileComponent",
   data () {
     return {
-      // inputArr: [
-      //   {id: 1, qty: 1, title: 'Sunday', name: 'sunday' },
-      //   {id: 2, qty: 2, title: 'Monday', name: 'monday' },
-      //   {id: 3, qty: 2, title: 'Tuesday', name: 'tuesday' },
-      //   {id: 4, qty: 2, title: 'Wednesday', name: 'wednesday' },
-      //   {id: 5, qty: 2, title: 'Thursday', name: 'thursday' },
-      //   {id: 6, qty: 1, title: 'Friday', name: 'friday' },
-      // ]
       inputArr: [
         {
           id: 1,
@@ -211,5 +202,20 @@ i{color: #95A2A7}
   color: #95A2A7;
   font-size: 32px;
   margin-top: 10px;
+}
+.slack, .github{
+  width: 21.563rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+i{
+  margin-top: 20px;
+}
+
+input{
+  box-shadow: none !important;
+  /*border: none !important;*/
+  outline: none !important;
 }
 </style>
