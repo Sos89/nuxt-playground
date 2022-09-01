@@ -10,9 +10,9 @@
       <div class="text-white text-23 ml-20 mt-20">
         <nuxt-link to="/myProfile"  prefetch><i class="fa-solid fa-address-book" ></i></nuxt-link>
       </div>
-      <div class="text-white text-23 ml-20 mt-20">
-        <nuxt-link to="/login"  prefetch><i class="fa-brands fa-linux"></i></nuxt-link>
-      </div>
+<!--      <div class="text-white text-23 ml-20 mt-20">-->
+<!--        <nuxt-link to="/login"  prefetch><i class="fa-brands fa-linux"></i></nuxt-link>-->
+<!--      </div>-->
     </div>
     <Nuxt />
   </div>
